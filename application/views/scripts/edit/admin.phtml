@@ -1,0 +1,88 @@
+<form action="/process/update " method="POST" enctype="multipart/form-data">
+<?=$this->form->getElement('id')->setDecorators(array('ViewHelper'))->setValue($this->id);?>
+<div class="container-fluid mywhite">
+	<div class="row-fluid">
+		<div class="span9">
+		<h3>Editar Pedido Nº<?=$this->id?></h3>
+		
+		<table class="table width-90">
+    		<tr>
+    		    <td>Nº: </td>
+    		    <td><?=$this->form->getElement('num')->setDecorators(array('ViewHelper'));?></td>
+    		    <td>Nome: </td>
+    		    <td><?=$this->form->getElement('nome')->setDecorators(array('ViewHelper'));?></td>
+    		    <td>Secção: </td>
+    		    <td><?=$this->form->getElement('seccao')->setDecorators(array('ViewHelper'));?></td>
+    		</tr>
+    		<tr>
+    		    <td>Dia de Falta: </td>
+    		    <td><?=$this->form->getElement('data_inicio')->setDecorators(array('ViewHelper'));?></td>
+    		    <td>Horas: </td>
+    		    <td><?=$this->form->getElement('horas')->setDecorators(array('ViewHelper'));?></td>
+    		    <td>Até: </td>
+    		    <td><?=$this->form->getElement('data_fim')->setDecorators(array('ViewHelper'));?></td>
+    		</tr>
+    		<tr>
+    		    <td>Motivo: </td>
+    		    <td><?=$this->form->getElement('motivo')->setDecorators(array('ViewHelper'));?></td>
+       		</tr>
+       		<tr>
+    		    <td>Data Pedido: </td>
+    		    <td><?=$this->form->getElement('data_abertura')->setDecorators(array('ViewHelper'));?></td>
+       		</tr>
+		</table>
+		</div>
+		<div class="span3 sp-left-15">
+		<h4>Ficheiros Justificação</h4>
+		<?php if (count($this->files) > 0):?>
+		<table>
+    		<?php $i = 1;?>    
+    		<?php foreach ($this->files as $file):?>    
+    		    <tr>
+    		        <td><i class="icon-file"></i>&nbsp;&nbsp;<a href="http://repo.faltas.intranet.fterceiro.pt/<?=$file['file_name']?>" target="_blank">Ficheiro <?=$i;?></a></td>
+    		    </tr>
+    		<?php $i++;?>    		
+    		<?php endforeach;?>
+		</table>
+		<?php else:?>
+		<p class="info-txt">Não existem ficheiros de justificação.</p>
+		<?php endif;?>
+		<div class="sp-top-15">
+		<?=$this->form->getElement('ficheiro')->setLabel('Carregar Ficheiro:');?>
+		</div>
+		</div>
+	</div>
+	
+<div class="row-fluid">
+		<div class="span12">
+		    <div class="well well-small txt-center txt-bold">Decisão da Administração</div>
+		    <div class="bottom-15">
+		    <table>
+		        <tr>
+		            <td>Justificada:</td>
+		            <td><?=$this->form->getElement('justificada')->setDecorators(array('ViewHelper'));?></td>
+		            <td><?=$this->form->getElement('justificada_txt')->setDecorators(array('ViewHelper'));?></td>
+		        </tr>
+		        <tr>
+		            <td>Injustificada:</td>
+		            <td><?=$this->form->getElement('injustificada')->setDecorators(array('ViewHelper'));?></td>
+		            <td><?=$this->form->getElement('injustificada_txt')->setDecorators(array('ViewHelper'));?></td>   
+		        </tr>
+		     </table>
+		     <br /><br />
+		     <table>   
+		        <tr>
+		            <td>Carnaxide:</td>
+		            <td><?=$this->form->getElement('data_admin')->setDecorators(array('ViewHelper'));?></td>
+		            <td class="pad-left-50">A Administração:</td>
+		            <td><?=$this->form->getElement('adminAss')->setDecorators(array('ViewHelper'));?></td>
+		        </tr>
+		    </table>
+		    </div>
+		</div>
+</div>
+<div class="bottom-15">
+<?=$this->form->getElement('submit')->setDecorators(array('ViewHelper'));?>	
+</div>	
+</form>
+</div>

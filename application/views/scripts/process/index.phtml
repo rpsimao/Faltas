@@ -1,0 +1,29 @@
+<?php if ($this->errors || count($this->adapterErrors) > 0) :?>
+<div class="initform" id="initform">
+	<div class="alert alert-error hidden" id="form-error-messages">
+		<button type="button" class="close" data-dismiss="alert">×</button>
+		<p id="my-error-messages"></p>
+	</div>
+	    <?php if (count($this->adapterErrors) > 0):?>
+	    <?php foreach ($this->adapterErrors as $error => $msg):?>
+		   <div class="alert alert-error"><?=$msg?></div>
+		<?php endforeach; endif;?>
+	
+	<h3>PEDIDO / JUSTIFICAÇÃO DE FALTA</h3>
+	
+	<?php echo $this->form?>
+	
+</div>
+<?php else:?>
+
+     <div class="alert alert-success">
+     
+     <h3><i class="icon-ok-sign"></i> O seu pedido foi enviado com sucesso.</h3>
+     <p>Para mais informações ou alterações, dirija-se ao Departamento de Recuroso Humanos.</p>
+     <p>Após análise pela Administração o Dep. Rec. Humanos, entregar-lhe-á um comprovativo.</p>
+     </div>
+
+
+
+<?php endif;?>
+
